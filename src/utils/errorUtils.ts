@@ -1,8 +1,8 @@
-const errors = {
-  '401': '$entity is not valid',
+const errorsMessage = {
+  '401': '$entity is missing/not valid - Unauthorized',
 };
 
-export function errorUtils(message: string, status: number) {
+export default function errorUtils(status: number, message: string) {
   let type = 'Unknown';
 
   if (status >= 500) {
@@ -13,8 +13,8 @@ export function errorUtils(message: string, status: number) {
     type = 'Redirect';
   }
 
-  if (errors[status] !== undefined) {
-    message = errors[status].replace('$entity', message);
+  if (errorsMessage[status] !== undefined) {
+    message = errorsMessage[status].replace('$entity', message);
   }
 
   return { type, status, message };
