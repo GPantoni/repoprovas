@@ -1,7 +1,7 @@
 import prisma from '../src/config/database.js';
 
 async function main() {
-  const exists = await prisma.disciplinesTeachers.findFirst({});
+  const exists = await prisma.teacherDiscipline.findFirst({});
   if (exists) return '';
 
   await prisma.term.createMany({
@@ -34,7 +34,7 @@ async function main() {
     ],
   });
 
-  await prisma.disciplinesTeachers.createMany({
+  await prisma.teacherDiscipline.createMany({
     data: [
       { teacherId: 1, disciplineId: 1 },
       { teacherId: 1, disciplineId: 2 },
