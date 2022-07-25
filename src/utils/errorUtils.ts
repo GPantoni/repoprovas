@@ -1,6 +1,4 @@
-const errorsMessage = {
-  '401': '$entity is missing/not valid - Unauthorized',
-};
+const errorsMessage = {};
 
 export default function errorUtils(status: number, message: string) {
   let type = 'Unknown';
