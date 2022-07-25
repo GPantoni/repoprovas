@@ -10,6 +10,16 @@ async function createTest(createTestData: CreateTestData) {
   return await testRepository.createTest(createTestData);
 }
 
-const testService = { createTest };
+async function getTestsByTerm() {
+  const tests = await testRepository.getTestsByTerm();
 
-export default testService;
+  return tests;
+}
+
+async function getTestsByTeacher() {
+  const tests = await testRepository.getTestsByTeacher();
+
+  return tests;
+}
+
+export const testService = { createTest, getTestsByTerm, getTestsByTeacher };
