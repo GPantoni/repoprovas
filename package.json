@@ -8,10 +8,11 @@
     "seed": "npx ts-node prisma/seed.ts"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx prisma migrate deploy && npx ts-node prisma/seed.ts && tsc",
     "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts",
-    "test": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i"
+    "test": "npm run makedb && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i",
+    "makedb": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test npx prisma migrate reset && dotenv -e .env.test npx ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",

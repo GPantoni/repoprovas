@@ -12,6 +12,7 @@ export async function validToken() {
   console.log(`!!!!!!!!!TOKEN!!!!!!!!!!
     ============>>>>>> ${token}
     `);
+  console.log(response.status);
 
   return token;
 }
