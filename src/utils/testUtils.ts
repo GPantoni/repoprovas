@@ -6,7 +6,6 @@ async function validateTestData(testInfo: CreateTestData) {
   const validCategory = await prisma.category.findFirst({
     where: { id: testInfo.categoryId },
   });
-  console.log(validCategory);
   if (!validCategory) {
     throw errorUtils(404, 'Category not found');
   }
@@ -14,10 +13,6 @@ async function validateTestData(testInfo: CreateTestData) {
   const validDisciplineTeacher = await prisma.teacherDiscipline.findFirst({
     where: { id: testInfo.teacherDisciplineId },
   });
-  console.log(
-    validDisciplineTeacher,
-    await prisma.teacherDiscipline.findMany()
-  );
   if (!validDisciplineTeacher) {
     throw errorUtils(404, 'DisciplineTeacher not found');
   }
