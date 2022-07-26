@@ -9,10 +9,6 @@ export async function validToken() {
     .post('/sign-in')
     .send({ email: user.email, password: user.password });
   const token: string = response.body.token;
-  console.log(`!!!!!!!!!TOKEN!!!!!!!!!!
-    ============>>>>>> ${token}
-    `);
-  console.log(response.status);
 
   return token;
 }
@@ -27,3 +23,5 @@ export async function testDataGenerator() {
 
   return testData;
 }
+
+export const invalidToken = faker.datatype.uuid();
